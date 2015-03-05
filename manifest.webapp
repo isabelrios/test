@@ -1,0 +1,14 @@
+{
+	"version": "0.1",
+	"name": "Cronometro",
+	"description": "Your new awesome Open Web App",
+	"launch_path": "/index.html",
+	
+	"developer": {
+		"name": "Isabel Rios",
+		"url": "https://googledrive.com/host/0B3yhA6q7ZXSvakl2MjRrL"
+	},
+	
+	"default_locale": "en"
+
+}

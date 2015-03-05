@@ -1,0 +1,86 @@
+@font-face {
+   font-family: 'FiraSansOT-Regular';
+   font-style: normal;
+   font-weight: normal;
+   src: url('font/FiraSans-Regular.ttf');
+   }
+
+#body{
+margin:0px;	
+}
+	
+#All{
+width:440px;
+height:800px;
+background-color:white;
+}
+
+h1{
+font-family: FiraSansOT-Regular;
+font-size: 1.8rem;
+color: white;
+margin-left:20px;
+margin-top: 10px;
+}
+
+h2{
+font-family: FiraSansOT-Regular;
+font-size: 1.3rem;
+color: black;
+margin-left:20px;
+}
+
+h3{
+font-family:FiraSansOT-Regular;
+font-size: 1rem;
+color: black;
+margin-left:20px;	
+}
+
+h4{
+font-family:FiraSansOT-Regular;
+font-size: 0.8rem;
+color: black;
+margin-left:20px;
+}
+#Cabecera{
+background:linear-gradient(to bottom, #CD6723, #BB482D); 	
+height:4rem;
+}
+
+#atras{
+float:left;
+width: 4rem;
+height: 4rem;
+background: url(back@2x.png) no-repeat;
+border-right:1px solid rgb(187,72,45);
+}
+
+#Titulo{
+float:left;
+width: 22.3rem;
+float:left;
+}
+
+#botones{
+margin-left:20px;
+}
+#Crono{
+clear:both;
+}
+
+#cambiar{
+border:1px solid rgb(187,72,45);
+}
+
+#cambiar:hover{
+background-color:#06F;
+}
+
+#inicializar{
+border:1px solid rgb(187,72,45);
+}
+
+#inicializar:hover{
+background-color:red;
+}
