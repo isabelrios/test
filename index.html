@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cronómetro</title>
+<link rel="stylesheet" type="text/css" href="Style.css">
+
+<script type="text/javascript" src="js/zepto.min.js" > </script>
+<script type="text/javascript" src="js/touch.js"></script>
+<script type="text/javascript">
+  $(function(){
+        localStorage.c = (localStorage.c || "0.00");  //Centesimas de segundo.
+        localStorage.l = (localStorage.l || "");  // Variable localStorage para guardar los tiempos que se mostraran en la lista.
+    var t, cl = $("#crono");
+    var lis = $("#lista");  // Variable para almacenar el contenido HTML de la lista.
+    var touch = $("#body");  // Variable para manejar los eventos touch dentro del Body.
+    lis.html(localStorage.l);  // Se muestran en pantalla los tiempos guardados.
+
+    function incr()     { localStorage.c = +localStorage.c + 0.01;}  // Incremento para centesimas.
+    function mostrar()  { cl.html((+localStorage.c).toFixed(2));};  //  toFixed a 2 para que muestre dos decimales.
+    function arrancar() { t=setInterval(function(){incr(); mostrar()}, 10);};  // A 10 para que se ejecute cada 10 milisegundos (una centesima de segundo).
+    function parar()    { clearInterval(t);  t=undefined; listar();}; 
+    function cambiar()  { if (!t) arrancar(); else parar();};
+    function listar()   { if (localStorage.c === "0.00" && localStorage.l === "") lis.html("");  // Si las dos variables estan vacias, se muestra la lista en blanco
+
+                        else lis.html(localStorage.l + (+localStorage.c).toFixed(2) + "</br>");  // Si no estan vacias entonces se muestra el contenido de la lista y el nuevo tiempo que se debe guardar.
+                        localStorage.l = lis.html();  //  Se actualiza la variable donde se guradan los tiempos con todo el contenido actual de la lista HTML.
+                        }
+
+    $("#cambiar").on('click', cambiar);
+    $("#inicializar").on('click', function(){ if (!t) {localStorage.c="0.00"; mostrar(); localStorage.l=""; listar();}});
+    mostrar();
+    touch.on('tap', cambiar);  
+    touch.on('swipe', function(){ if (!t) {localStorage.c="0.00"; mostrar(); localStorage.l=""; listar();}});  
+    
+  });
+</script>
+</head>
+<div id="All">
+<body id="body">  
+    <div id="Cabecera">
+    	<div id="atras">
+		</div>
+    	<div id="Titulo">
+    	<h1>Cronómetro</h1>
+		</div>
+    </div>  
+    
+    <section id="reloj">
+    <div id="Crono">
+    <h2><span id="crono"> 0.00 </span>  Segundos</h2>  
+	</section>
+    <div id="botones">
+    <section id="botones">
+    <button type="button" id="cambiar"> Comenzar/Parar </button>
+    <button type="button" id="inicializar"> Iniciar </button>
+	</section>
+    
+    <section id="tiempos">
+    <p><h3>Tiempos:</h3></p>  
+    <h4><div id="lista"></div></h4>  
+	</section>
+    </div>
+    </div>
+</div>
+</body>
+</html>
